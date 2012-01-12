@@ -228,6 +228,12 @@
 }
 */
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self refreshAction:nil];
+    [super viewDidAppear:animated];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
