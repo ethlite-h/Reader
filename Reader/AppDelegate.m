@@ -7,19 +7,44 @@
 //
 
 #import "AppDelegate.h"
+#import "RootViewController.h"
+#import "FeedViewController.h"
 
 @implementation AppDelegate
-
+@synthesize rootViewController = _rootViewController;
+@synthesize feedViewController = _feedViewController;
 @synthesize window = _window;
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
+
+
+- (RootViewController *)rootViewController
+{
+    if (!_rootViewController) {
+        _rootViewController = [[RootViewController alloc] initWithNibName:nil bundle:nil];
+    }
+    return _rootViewController;
+}
+
+- (FeedViewController *)feedViewController
+{
+    if (!_feedViewController) {
+        _feedViewController = [[FeedViewController alloc] initWithStyle:UITableViewStylePlain];
+    }
+    return _feedViewController;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    [self.rootViewController addChildViewController: self.feedViewController];
+    [self.rootViewController.view addSubview:self.feedViewController.view];
+
+    self.window.rootViewController = self.rootViewController;
     [self.window makeKeyAndVisible];
     return YES;
 }

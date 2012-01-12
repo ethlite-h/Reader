@@ -12,7 +12,7 @@
     </entity>
     <entity name="Feed" representedClassName="Feed" syncable="YES">
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entry" inverseName="feed" inverseEntity="Entry" syncable="YES"/>
+        <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Entry" inverseName="feed" inverseEntity="Entry" syncable="YES"/>
     </entity>
     <entity name="MediaGroup" syncable="YES">
         <attribute name="medium" optional="YES" attributeType="String" syncable="YES"/>
